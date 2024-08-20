@@ -18,10 +18,4 @@ To get started, you need to create a user account.
 
 You need to provide your, login info
 
-    Name: <your-name> # Admin / Root / Superuser
-    Email: [ADMIN_EMAIL]
-    PASSWORD: [ADMIN_PASSWORD]
-    CONFIRM_PASSWORD: [ADMIN_PASSWORD]
-    INVITE_CODE=
-
-For any signup, you'll need an invite code that's stored in your `.env` file. To find it, go to Tools > Open VS Code, then navigate to the `.env` file. Use the invite code from there to sign up or add new users.
+> For any signup, you'll need an invite code that's stored in your `.env` file. To find it, go to Tools > Open VS Code, then navigate to the `.env` file. Use the invite code from there to sign up or add new users.
