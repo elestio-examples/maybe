@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: ghcr.io/maybe-finance/maybe:latest
+    image: ghcr.io/maybe-finance/maybe:${SOFTWARE_VERSION_TAG}
     ports:
       - 172.17.0.1:28080:3000
     restart: always
