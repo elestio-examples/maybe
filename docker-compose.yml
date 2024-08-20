@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  app:
+    image: ghcr.io/maybe-finance/maybe:latest
+    ports:
+      - 172.17.0.1:28080:3000
+    restart: always
+    environment:
+      SELF_HOSTING_ENABLED: "true"
+      RAILS_FORCE_SSL: "false"
+      RAILS_ASSUME_SSL: "false"
+      GOOD_JOB_EXECUTION_MODE: async
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      DB_HOST: postgres
+      POSTGRES_DB: maybe
+      POSTGRES_USER: maybe
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      APP_DOMAIN: ${APP_DOMAIN}
+      REQUIRE_INVITE_CODE: true
+      
+      # Email Configuration
+      SMTP_ADDRESS: ${SMTP_ADDRESS}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_TLS_ENABLED: true
+      EMAIL_SENDER: ${SMTP_LOGIN}
+
+      UPGRADES_ENABLED: false 
+      UPGRADES_MODE: manual 
+      UPGRADES_TARGET: release
+    volumes:
+      - ./data/app_storage:/rails/storage
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: elestio/postgres:16
+    restart: always
+    volumes:
+      - ./data/pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: maybe
+      POSTGRES_DB: maybe
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U maybe -d maybe" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+  pgadmin4:
+    image: elestio/pgadmin:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${ADMIN_PASSWORD}
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - "172.17.0.1:15822:8080"
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
