@@ -2,7 +2,7 @@ ports:
   - protocol: "HTTPS"
     targetProtocol: "HTTP"
     listeningPort: "443"
-    targetPort: "9448"
+    targetPort: "35147"
     targetIP: "172.17.0.1"
     public: true
     path: "/"
@@ -19,7 +19,7 @@ ports:
     targetProtocol: "TCP"
     listeningPort: "25412"
     targetIP: "172.17.0.1"
-    targetPort: "2611"
+    targetPort: "4636"
     public: true
 environments:
   - key: "SOFTWARE_VERSION_TAG"

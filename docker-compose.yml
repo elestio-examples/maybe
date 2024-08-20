@@ -4,7 +4,7 @@ services:
   app:
     image: ghcr.io/maybe-finance/maybe:${SOFTWARE_VERSION_TAG}
     ports:
-      - 172.17.0.1:28080:3000
+      - 172.17.0.1:35147:3000
     restart: always
     environment:
       SELF_HOSTING_ENABLED: "true"
@@ -39,6 +39,8 @@ services:
   postgres:
     image: elestio/postgres:16
     restart: always
+    ports:
+      - "172.17.0.1:4636:8080"
     volumes:
       - ./data/pg_data:/var/lib/postgresql/data
     environment:

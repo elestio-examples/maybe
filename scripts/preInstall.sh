@@ -47,7 +47,7 @@ cat <<EOT > ./servers.json
             "Name": "local",
             "Group": "Servers",
             "Host": "172.17.0.1",
-            "Port": 2611,
+            "Port": 4636,
             "MaintenanceDB": "maybe",
             "SSLMode": "prefer",
             "Username": "maybe",
