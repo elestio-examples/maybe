@@ -56,5 +56,3 @@ cat <<EOT > ./servers.json
     }
 }
 EOT
-
-updateEnv | tee -a ./.env
