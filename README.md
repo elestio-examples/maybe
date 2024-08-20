@@ -2,7 +2,7 @@
 
 <a href="https://dash.elest.io/deploy?source=cicd&social=dockerCompose&url=https://github.com/elestio-examples/maybe"><img src="deploy-on-elestio.png" alt="Deploy on Elest.io" width="180px" /></a>
 
-Deploy Maybe server with CI/CD on Elestio
+Deploy Maybe Finance with CI/CD on Elestio
 
 <img src="maybe.png" style='width: 100%;'/>
 <br/>
